@@ -1,0 +1,9 @@
+[16:17:08] E-CS52-1 (attempt 3) begin
+Linux codespaces-9feb46 6.8.0-1064-azure #72~22.04.1-Ubuntu SMP Wed Jul 22 23:39:45 UTC 2026 x86_64 GNU/Linux
+node: v20.20.2
+npm:  10.8.2
+git:  git version 2.55.0
+[16:17:08] env var names receipted (values never)
+[16:17:09] npm install @superinstance/qthe via scoped .npmrc (token not printed)
+[16:17:10] install rc=1
+[16:17:10] receipt written, verdict=FAIL
