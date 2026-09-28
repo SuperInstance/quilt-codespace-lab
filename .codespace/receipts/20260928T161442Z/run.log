@@ -1,0 +1,9 @@
+[16:14:42] E-CS52-1 (attempt 2) begin
+Linux codespaces-18543a 6.8.0-1064-azure #72~22.04.1-Ubuntu SMP Wed Jul 22 23:39:45 UTC 2026 x86_64 GNU/Linux
+node: v20.20.2
+npm:  10.8.2
+git:  git version 2.55.0
+[16:14:42] env var names receipted (values never)
+[16:14:42] npm install @superinstance/qthe --registry=https://npm.pkg.github.com
+[16:14:43] install rc=1
+[16:14:43] receipt written, verdict=FAIL
