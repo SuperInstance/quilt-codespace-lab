@@ -26,7 +26,7 @@ mkdir -p "$OUT"
 
 log() { echo "[$(date -u +%H:%M:%S)] $*" >> "$OUT/run.log"; }
 
-log "E-CS52-1 (attempt 4) begin"
+log "E-CS52-1 (attempt 5) begin"
 { uname -a; } >> "$OUT/run.log" 2>&1
 echo "node: $(command -v node >/dev/null 2>&1 && node -v 2>&1 || echo ABSENT)" >> "$OUT/run.log"
 echo "npm:  $(command -v npm  >/dev/null 2>&1 && npm -v  2>&1 || echo ABSENT)" >> "$OUT/run.log"
@@ -59,11 +59,11 @@ if command -v npm >/dev/null 2>&1; then
     log "channel B: release-asset fallback (E403 root cause receipted in attempt 3)"
     curl -sS -L -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" \
       -o /tmp/consumer/qthe.tgz \
-      "https://api.github.com/repos/SuperInstance/qthe/releases/tags/v0.1.0" >> "$OUT/install.log" 2>&1
+      "https://api.github.com/repos/SuperInstance/qthe/releases/tags/v0.1.1" >> "$OUT/install.log" 2>&1
     # the above fetches metadata; grab the asset properly
     ASSET_URL=$(curl -sS -H "Authorization: token ${GITHUB_TOKEN}" \
-      "https://api.github.com/repos/SuperInstance/qthe/releases/tags/v0.1.0" \
-      | grep -o '"browser_download_url": *"[^"]*superinstance-qthe-0.1.0.tgz"' | head -1 | cut -d'"' -f4)
+      "https://api.github.com/repos/SuperInstance/qthe/releases/tags/v0.1.1" \
+      | grep -o '"browser_download_url": *"[^"]*superinstance-qthe-0.1.1.tgz"' | head -1 | cut -d'"' -f4)
     log "asset url resolved: ${ASSET_URL:+yes}"
     if [ -n "$ASSET_URL" ]; then
       curl -sS -L -H "Authorization: token ${GITHUB_TOKEN}" -o /tmp/consumer/qthe.tgz "$ASSET_URL" >> "$OUT/install.log" 2>&1
@@ -90,7 +90,7 @@ fi
 
 # --- step 3: receipt ---
 cat > "$OUT/RECEIPT.md" <<EOF
-# Codespace experiment receipt E-CS52-1 (attempt 4)
+# Codespace experiment receipt E-CS52-1 (attempt 5)
 - date (UTC): $TS
 - codespace: $CODESPACE_NAME
 - repo: $GITHUB_REPOSITORY
