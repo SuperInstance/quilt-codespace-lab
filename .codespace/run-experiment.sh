@@ -26,7 +26,7 @@ mkdir -p "$OUT"
 
 log() { echo "[$(date -u +%H:%M:%S)] $*" >> "$OUT/run.log"; }
 
-log "E-CS52-1 (attempt 5) begin"
+log "E-CS52-1 (attempt 6) begin"
 { uname -a; } >> "$OUT/run.log" 2>&1
 echo "node: $(command -v node >/dev/null 2>&1 && node -v 2>&1 || echo ABSENT)" >> "$OUT/run.log"
 echo "npm:  $(command -v npm  >/dev/null 2>&1 && npm -v  2>&1 || echo ABSENT)" >> "$OUT/run.log"
@@ -76,9 +76,15 @@ if command -v npm >/dev/null 2>&1; then
   fi
   # --- step 2: sealed selftest ---
   if [ $INSTALL_RC -eq 0 ]; then
+    sha256sum /tmp/consumer/qthe.tgz >> "$OUT/run.log" 2>/dev/null
+    python3 - <<'PYEOF' >> "$OUT/run.log" 2>/dev/null || node -e "console.log('ver:',require('/tmp/consumer/node_modules/@superinstance/qthe/package.json').version)" >> "$OUT/run.log" 2>&1
+print("ver:", open('/tmp/consumer/node_modules/@superinstance/qthe/package.json').read().split('"version": "')[1].split('"')[0])
+PYEOF
     node node_modules/@superinstance/qthe/selftest.mjs > "$OUT/selftest.log" 2>&1
     SELFTEST_RC=$?
     log "selftest rc=$SELFTEST_RC (0 == 54/54)"
+    # per-case detail lives in the consumer's run_receipts — capture it
+    cp -r node_modules/@superinstance/qthe/run_receipts "$OUT/consumer_run_receipts" >> "$OUT/run.log" 2>&1
     [ $SELFTEST_RC -eq 0 ] && VERDICT="PASS"
   else
     tail -40 "$OUT/install.log" > "$OUT/selftest.log"
@@ -90,7 +96,7 @@ fi
 
 # --- step 3: receipt ---
 cat > "$OUT/RECEIPT.md" <<EOF
-# Codespace experiment receipt E-CS52-1 (attempt 5)
+# Codespace experiment receipt E-CS52-1 (attempt 6)
 - date (UTC): $TS
 - codespace: $CODESPACE_NAME
 - repo: $GITHUB_REPOSITORY
