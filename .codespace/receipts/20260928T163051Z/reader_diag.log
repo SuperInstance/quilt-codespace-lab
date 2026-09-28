@@ -1,0 +1,10 @@
+node -v: v20.20.2
+reader: pin table mtime does not match seal.mtime_local (1790613055663.0051 vs 499162500000) — refusing to walk (fail closed)
+direct-reader rc=2
+--- direct reader stdout ---
+tar-extract selftest rc=0
+ "cases_total": 54,
+ "cases_passed": 54,
+ "escapes": 0,
+ "ok": true
+}
