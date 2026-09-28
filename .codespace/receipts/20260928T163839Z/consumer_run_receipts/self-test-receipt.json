@@ -1,0 +1,919 @@
+{
+ "tool": "qthe two_reader/selftest.mjs (negative controls, installment 2; wave-52 mode-aware)",
+ "mode": "mtime-witness (distribution context: pins mtime normalized by installer; strict suite would self-refuse — fleet law A4)",
+ "lane": "wave 48 lane 48-b",
+ "run_at": "2026-09-28T16:38:44.307Z",
+ "cases_total": 54,
+ "cases_passed": 54,
+ "escapes": 0,
+ "controls": {
+  "S1": "one flipped byte in EVERY row of EVERY chain (49 rows) — detected + localized at the tampered row",
+  "S2": "missing row file fails closed at that row",
+  "S3": "wrong --expect-tip on good bytes fails closed at the tip check",
+  "S4": "tampered byte inside usage.jsonl (row-set row) caught at the usage row",
+  "S5": "unknown chain id fails closed",
+  "S6": "mutated registration (broken seal) — reader refuses to walk"
+ },
+ "ok": true,
+ "results": [
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 1,
+   "row_id": "predictions",
+   "detected": true,
+   "localized_at_row": 1,
+   "expected_row": 1,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 1,
+    "row_id": "predictions",
+    "check": "bytes_pin",
+    "detail": "row digest ce36a973b1593271a2d59f2b20e09dfd4e4eeef61b44132ad56978066c732d7d != pinned 76bf72511c5507d0997eb7a2dc4d152090a8f7a0860f42b8159248fc21beac2a — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 2,
+   "row_id": "moth-fetch-attempt1-fail",
+   "detected": true,
+   "localized_at_row": 2,
+   "expected_row": 2,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 2,
+    "row_id": "moth-fetch-attempt1-fail",
+    "check": "bytes_pin",
+    "detail": "row digest 94abb011a2af2e819e21e31ec44bf6675c3ab29666f3c834a6b57fc994a977d3 != pinned 3190f715deb4b07e70feb942a707b22e31e49350e138dd0e3b980f33b87d7803 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 3,
+   "row_id": "moth-fetch-receipt",
+   "detected": true,
+   "localized_at_row": 3,
+   "expected_row": 3,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 3,
+    "row_id": "moth-fetch-receipt",
+    "check": "bytes_pin",
+    "detail": "row digest c953c6b2688917983783d6d72f61597eee8f9300d9a439f045629f4656bd865b != pinned 21ecf300b6b32828c8e65f4b552ba95fb3f764aa6969b1e7468d8ab387b8acca — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 4,
+   "row_id": "moth-raw-bits-local-sample",
+   "detected": true,
+   "localized_at_row": 4,
+   "expected_row": 4,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 4,
+    "row_id": "moth-raw-bits-local-sample",
+    "check": "bytes_pin",
+    "detail": "row digest 118fb84be60e8bc99a41f361f318a7ed03d24065a8da7745127602dfb8c17e09 != pinned 20036581c31cb2aa2a313ef5a2be445539f567a9f779d0b794b412a27ac2e710 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 5,
+   "row_id": "whitening-receipt",
+   "detected": true,
+   "localized_at_row": 5,
+   "expected_row": 5,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 5,
+    "row_id": "whitening-receipt",
+    "check": "bytes_pin",
+    "detail": "row digest a31f911b9db8b26b96f3549e3f76971458f68878e18db3d3619273e224407b06 != pinned f7faba2c28ff006a6f4daf59e4b604eb5df1d9f8476fe722d853e6b0257aa780 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 2,
+   "row_id": "call-01-request",
+   "detected": true,
+   "localized_at_row": 2,
+   "expected_row": 2,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 2,
+    "row_id": "call-01-request",
+    "check": "bytes_pin",
+    "detail": "row digest 1904289874277085fcc96fe0e1bab1398acf6925127b19413c97caf69d20aff6 != pinned f8883ad628dcdd728f6eaae5a73c2de298d5d8d891b9dbfd1c68ecbe8afae55a — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 3,
+   "row_id": "call-01-response",
+   "detected": true,
+   "localized_at_row": 3,
+   "expected_row": 3,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 3,
+    "row_id": "call-01-response",
+    "check": "bytes_pin",
+    "detail": "row digest b3bd6e1a24800f0f91aef1d932b3a50ff9424d277119d36ca24398bad01450cb != pinned ed12021fe8e7295fa8dc20f77532f15a2f2143614f709316cbc8f33249961a29 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 4,
+   "row_id": "call-02-request",
+   "detected": true,
+   "localized_at_row": 4,
+   "expected_row": 4,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 4,
+    "row_id": "call-02-request",
+    "check": "bytes_pin",
+    "detail": "row digest 88403e82d267c96323827ac3f774d5ff84872179e1f6a364a212eb339db155f7 != pinned 47bd9ecdd23af10cbaf0fbaa24ecd9d08e5d413e64a1cbf90802d9462f016524 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 5,
+   "row_id": "call-02-response",
+   "detected": true,
+   "localized_at_row": 5,
+   "expected_row": 5,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 5,
+    "row_id": "call-02-response",
+    "check": "bytes_pin",
+    "detail": "row digest d98cd095a90a7040a71ffb23560a33259c9240db3e039a4ecc5bfc7fc98152f7 != pinned 28ea2b6688ca519efa09e09742dddecde3f066b7a2d852f8afc60f9b5490baec — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 6,
+   "row_id": "call-03-request",
+   "detected": true,
+   "localized_at_row": 6,
+   "expected_row": 6,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 6,
+    "row_id": "call-03-request",
+    "check": "bytes_pin",
+    "detail": "row digest 40cdfac3370d104bfc0d3f130bfbf34ea4621e44d697a90ceed677a9c1599708 != pinned c4382b7e3ead8bf33c8642f51f11bc7b87b9e2d3720163294762437d12636ed5 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 7,
+   "row_id": "call-03-response",
+   "detected": true,
+   "localized_at_row": 7,
+   "expected_row": 7,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 7,
+    "row_id": "call-03-response",
+    "check": "bytes_pin",
+    "detail": "row digest c4aaae0004c0911789ab8ea889835a1c4606e86a74268e07fc412cf64d71c5a1 != pinned 99c0f3e2748a1e4ffe914faeab7d416fd333327aac819ce5f0a7641c545e512b — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 8,
+   "row_id": "call-04-request",
+   "detected": true,
+   "localized_at_row": 8,
+   "expected_row": 8,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 8,
+    "row_id": "call-04-request",
+    "check": "bytes_pin",
+    "detail": "row digest 7f088c1cd7497843d78a9ffd1191e326b4e8effe22df7859c04bbed6c228f1ed != pinned 3244f3b6baf90213df9d714dfbacfe7b90ab6fd7535cc2b5d334d0854bb9d551 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 9,
+   "row_id": "call-04-response",
+   "detected": true,
+   "localized_at_row": 9,
+   "expected_row": 9,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 9,
+    "row_id": "call-04-response",
+    "check": "bytes_pin",
+    "detail": "row digest 8a95646e49e23442cf64b5735440e8a31b0cc49c898aa2876452854677a3f514 != pinned d1311ba4d11e559321779407f1e3a2bc8f76d3e0d3a68adddcc1137011ba4b0c — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 10,
+   "row_id": "call-05-request",
+   "detected": true,
+   "localized_at_row": 10,
+   "expected_row": 10,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 10,
+    "row_id": "call-05-request",
+    "check": "bytes_pin",
+    "detail": "row digest 7afd28138446bdb82f593d6e2490f9c54af93c1db4d47d9c4e42e18fc281c46b != pinned 9a004667ef4236d74ae89ecbd3dac9397235921222408b45fc5bf45422963c4d — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 11,
+   "row_id": "call-05-response",
+   "detected": true,
+   "localized_at_row": 11,
+   "expected_row": 11,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 11,
+    "row_id": "call-05-response",
+    "check": "bytes_pin",
+    "detail": "row digest bcbb74c843703a9856552aca018ad0744eeb77e188ed13ae739027ced4c72422 != pinned 6c35b0db1bb5fa5648bcf94f6963d55534ecef2270bc648ecd56048fc1e4c54e — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 16,
+   "row_id": "resume-ingested",
+   "detected": true,
+   "localized_at_row": 16,
+   "expected_row": 16,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 16,
+    "row_id": "resume-ingested",
+    "check": "bytes_pin",
+    "detail": "row digest bf94b61daeaa61615bb9217385493a0d058941064b00d9a294ef465155a7e572 != pinned 0309e529af5bbd8df8aa31a1c45c3fdcf8bcaebf14742722c53400bd4269994c — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 17,
+   "row_id": "usage-jsonl",
+   "detected": true,
+   "localized_at_row": 17,
+   "expected_row": 17,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 17,
+    "row_id": "usage-jsonl",
+    "check": "bytes_pin",
+    "detail": "row digest 9636999b9e39ebe2175e4d8e619cf76ad3e7fd38e6e17d7f22dad14610402685 != pinned 7fed06bc2c6f56ad6ada9d98962ef21e3be2fcf0bfe74243215597fcb63a75bb — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 18,
+   "row_id": "results",
+   "detected": true,
+   "localized_at_row": 18,
+   "expected_row": 18,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 18,
+    "row_id": "results",
+    "check": "bytes_pin",
+    "detail": "row digest 8f4d2d9e42d0d40caa368406f6064eacb5d6d236dfda7c132a6b1c0c2fb3f695 != pinned 818e66834edb5ed1d21f1a2070eeb860d6cc8dd291546deaa59ea3fb61bc2184 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab45c",
+   "row_index": 19,
+   "row_id": "verdict-md",
+   "detected": true,
+   "localized_at_row": 19,
+   "expected_row": 19,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 19,
+    "row_id": "verdict-md",
+    "check": "bytes_pin",
+    "detail": "row digest dfd5fb12e77129d2181be6eee5c539470e73e2f04f696d6caef86387f8948608 != pinned ea799dff96a4d3acbf751946cd6db89f615a546a91b573400f3541045a6adb66 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab44a",
+   "row_index": 1,
+   "row_id": "predictions",
+   "detected": true,
+   "localized_at_row": 1,
+   "expected_row": 1,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab44a",
+    "row_index": 1,
+    "row_id": "predictions",
+    "check": "bytes_pin",
+    "detail": "row digest eb26c92788e8ba3218fdede144bf70631deb80e87fe3bcafcb57a0cef26edb4b != pinned 76e5ef055f74c4d3b59d2021f1cfb59c994c44ad6119fedae6db5950b0b3ece7 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab44a",
+   "row_index": 2,
+   "row_id": "gan-lures",
+   "detected": true,
+   "localized_at_row": 2,
+   "expected_row": 2,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab44a",
+    "row_index": 2,
+    "row_id": "gan-lures",
+    "check": "bytes_pin",
+    "detail": "row digest 71c91ab79ddb176c8e06b2714bac82a4ba02917df7abeb250d9e614355049c25 != pinned bc2ef70014b09ba7a473b2cd33b3bc2186d5465c4b4e9bc22a8988ce87c5673f — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab44a",
+   "row_index": 3,
+   "row_id": "results",
+   "detected": true,
+   "localized_at_row": 3,
+   "expected_row": 3,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab44a",
+    "row_index": 3,
+    "row_id": "results",
+    "check": "bytes_pin",
+    "detail": "row digest 4c7f15d5476289ec3481a3f9e7538cb861b73914687369653f213ef81ecc8126 != pinned 6d7db23ec86e2ffb79d8dcae65b9972fd87bd6f012ecc33d596fb7ebe47a0d78 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab44a",
+   "row_index": 4,
+   "row_id": "verdict-md",
+   "detected": true,
+   "localized_at_row": 4,
+   "expected_row": 4,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab44a",
+    "row_index": 4,
+    "row_id": "verdict-md",
+    "check": "bytes_pin",
+    "detail": "row digest 7b6e7a7afd99aa2070bdc143468a49672102f232feef14fc180a9ac4d226584f != pinned 2c7387dcec6084182971c5631d709e20cbfcf4e39a75e9e2c149c9121ab24554 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 1,
+   "row_id": "predictions",
+   "detected": true,
+   "localized_at_row": 1,
+   "expected_row": 1,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 1,
+    "row_id": "predictions",
+    "check": "bytes_pin",
+    "detail": "row digest c1a4b37f59ea9dd826af9f0fd1c8f379e418a543935fbc970e365ca29469e1d5 != pinned e7796d2966802ea08b50f2f9531371d328c9c520db8f11a61980ff5a805b7d2f — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 2,
+   "row_id": "registration-receipt",
+   "detected": true,
+   "localized_at_row": 2,
+   "expected_row": 2,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 2,
+    "row_id": "registration-receipt",
+    "check": "bytes_pin",
+    "detail": "row digest f874300d3fb66d8483db6d22275042216d76d0d5b845429194e9cf1506c58441 != pinned f1c0007970962b0183a948040fffe6185077eb87bc9bac705b1233eebfa9c903 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 3,
+   "row_id": "order-reuse-receipt",
+   "detected": true,
+   "localized_at_row": 3,
+   "expected_row": 3,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 3,
+    "row_id": "order-reuse-receipt",
+    "check": "bytes_pin",
+    "detail": "row digest 1f080bef7075e026a17c61892c4fb7b8f5472721eae03496f6df526829d65afd != pinned 29efe5e8631eb6167b6618a7c89acd5a9483f7cdfee265503c4aa710f334b855 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 4,
+   "row_id": "call-01-request",
+   "detected": true,
+   "localized_at_row": 4,
+   "expected_row": 4,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 4,
+    "row_id": "call-01-request",
+    "check": "bytes_pin",
+    "detail": "row digest 1bc90a7328768adc92f0436400acb7ddcf3b0a91442e5022b9eadaaee89a14f5 != pinned e373435361d5cc13ef04c5dd283e9e7873b09cde1fa8de80e14744afab5fb4c0 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 5,
+   "row_id": "call-01-response",
+   "detected": true,
+   "localized_at_row": 5,
+   "expected_row": 5,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 5,
+    "row_id": "call-01-response",
+    "check": "bytes_pin",
+    "detail": "row digest 216ea47c2c28c4a51ea91bd3886da85966000c9b154019ab6ce3067d8831575b != pinned bdc20d05fc22c4cfaa675e8b320d9c9973acab1089dd21954603cb5df2a3ea4d — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 6,
+   "row_id": "call-02-request",
+   "detected": true,
+   "localized_at_row": 6,
+   "expected_row": 6,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 6,
+    "row_id": "call-02-request",
+    "check": "bytes_pin",
+    "detail": "row digest 5542a662270c2e6a653df332f87a54446c6c9910d2a3a7a96e463dd0fdbe33de != pinned bb739de936fe9a61137dae61e02150affe551abda82682e9efee6506177b6be8 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 7,
+   "row_id": "call-02-response",
+   "detected": true,
+   "localized_at_row": 7,
+   "expected_row": 7,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 7,
+    "row_id": "call-02-response",
+    "check": "bytes_pin",
+    "detail": "row digest be52efcf30a5c35a1a0b854da7d161cb4e0aaab4dc0d57a4cc48842a6f181673 != pinned aa84c87cc5c0d8cd725ed61a4fee5713542c516e50d01b34d4b07185e859bc7c — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 8,
+   "row_id": "call-03-request",
+   "detected": true,
+   "localized_at_row": 8,
+   "expected_row": 8,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 8,
+    "row_id": "call-03-request",
+    "check": "bytes_pin",
+    "detail": "row digest e83832ee131d2c079840f26786583eba059768fea928aaf79d2f39663f1bd89f != pinned d312f01d0e110bb123c62f8bdafe096f4954c8eae01801407ff3eedb54adb8f1 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 9,
+   "row_id": "call-03-response",
+   "detected": true,
+   "localized_at_row": 9,
+   "expected_row": 9,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 9,
+    "row_id": "call-03-response",
+    "check": "bytes_pin",
+    "detail": "row digest 7de1686f0082e24062b0d73d8e6ac91d795dafd32748e8b116d9777230ab4ce4 != pinned c24dcc81569cd0475b14375848426f1e159dae76586e75a2bfd779dd205615a1 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 10,
+   "row_id": "call-04-request",
+   "detected": true,
+   "localized_at_row": 10,
+   "expected_row": 10,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 10,
+    "row_id": "call-04-request",
+    "check": "bytes_pin",
+    "detail": "row digest 55493cd53e8f3e156caac43a3731ed6492079d2b90e938e14225a117e9a8e431 != pinned d08e2b432cf1ce471475fdda6cb84281d5c968ce0131976f92a9b67b7a829552 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 11,
+   "row_id": "call-04-response",
+   "detected": true,
+   "localized_at_row": 11,
+   "expected_row": 11,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 11,
+    "row_id": "call-04-response",
+    "check": "bytes_pin",
+    "detail": "row digest db1ffc70d03038e630300d43f8cdc464342fecca2cbd9d643b7bc971069498fb != pinned 962bc6e4187575693a9ccdd8ee532d4ea5576e66e044ec9320e574b5ae654e3c — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 12,
+   "row_id": "call-05-request",
+   "detected": true,
+   "localized_at_row": 12,
+   "expected_row": 12,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 12,
+    "row_id": "call-05-request",
+    "check": "bytes_pin",
+    "detail": "row digest ebf0e313450aca24d060c8dd2e53b6aa703d82f698a0d40162b2289621d27e05 != pinned c72002930485ec2b3da4c0fdea0376ccc4b3a017fd4201b1998a430231acb5bb — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 13,
+   "row_id": "call-05-response",
+   "detected": true,
+   "localized_at_row": 13,
+   "expected_row": 13,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 13,
+    "row_id": "call-05-response",
+    "check": "bytes_pin",
+    "detail": "row digest 3f973d66a5d1daa6a6d219336744853ac17f467a7ff71c14ca12d1902d44b5ad != pinned bb2e2e1adcaa37f18e0800cbec93183e45f95b7fac62f438a32097c27301e4d3 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 14,
+   "row_id": "call-06-request",
+   "detected": true,
+   "localized_at_row": 14,
+   "expected_row": 14,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 14,
+    "row_id": "call-06-request",
+    "check": "bytes_pin",
+    "detail": "row digest 78c92ab5b11ce84cf681322955b040cbcc957fd1fd4fcecd523d64b91f51c181 != pinned 4697279822d327cce3de3a1ea0f3fd8c0f09cd7d246a2446740e989781a01be0 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 15,
+   "row_id": "call-06-response",
+   "detected": true,
+   "localized_at_row": 15,
+   "expected_row": 15,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 15,
+    "row_id": "call-06-response",
+    "check": "bytes_pin",
+    "detail": "row digest da921a58b46e58aea6bc0a22d49615ed54364569ef48ad79cbdb9397ace9426b != pinned e20d7c0cc6d4cce96f963bd1b1251e00292c3192b4d78ed7e5c3db3345018357 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 16,
+   "row_id": "call-07-request",
+   "detected": true,
+   "localized_at_row": 16,
+   "expected_row": 16,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 16,
+    "row_id": "call-07-request",
+    "check": "bytes_pin",
+    "detail": "row digest e8edca1442533239e2fc4656b5c5b5ab10590b7a28a0c9060dfd9cdcbd828d66 != pinned fd6ae63f9314d11fa27bd8ea57a28f4ecd3db8dc0fafef284375789d54199571 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 17,
+   "row_id": "call-07-response",
+   "detected": true,
+   "localized_at_row": 17,
+   "expected_row": 17,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 17,
+    "row_id": "call-07-response",
+    "check": "bytes_pin",
+    "detail": "row digest 25b50f9649f02ea0493e432122f0b05eeb1e84d2a1ed7ac00fb9e1614c6d9a7d != pinned f3c1bf08debd3927819521fcb0a7ca580144ead5a1a7071405f0b7259592033d — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 18,
+   "row_id": "call-08-request",
+   "detected": true,
+   "localized_at_row": 18,
+   "expected_row": 18,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 18,
+    "row_id": "call-08-request",
+    "check": "bytes_pin",
+    "detail": "row digest d52f1c21d3f65c3d78f015d92057955f524299fe531b722dae9665eb8f65c06c != pinned acf5d4ae24f030509601b0c5cf91e9e52a93a501290d9e3959a099d070e206c2 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 19,
+   "row_id": "call-08-response",
+   "detected": true,
+   "localized_at_row": 19,
+   "expected_row": 19,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 19,
+    "row_id": "call-08-response",
+    "check": "bytes_pin",
+    "detail": "row digest 5b3eda2a741c7648bdd857754d1d758296c114a83753f2f155b3a710502ef279 != pinned ee6dedb550acb607a6836ded3e4a36341ed6dcb80c42f40da838af703768d503 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 20,
+   "row_id": "call-09-request",
+   "detected": true,
+   "localized_at_row": 20,
+   "expected_row": 20,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 20,
+    "row_id": "call-09-request",
+    "check": "bytes_pin",
+    "detail": "row digest 47df0d13dc33ae470f74708147a30f9571b1061b8756e33171d66646f1fb0e70 != pinned 135604ab447ff553846f858a64c8f1e429a4da87fcf591b25ad079d9c72267bd — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 21,
+   "row_id": "call-09-response",
+   "detected": true,
+   "localized_at_row": 21,
+   "expected_row": 21,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 21,
+    "row_id": "call-09-response",
+    "check": "bytes_pin",
+    "detail": "row digest 6f92b45d3f6807a13b257d7a5ebb1af9c8b892a7d2b84e3e5ac927dca8e24f38 != pinned e75a1a5eab43dc18facd4722bae2e276da7bc0b97346491acc20572eaeba3efb — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 22,
+   "row_id": "call-10-request",
+   "detected": true,
+   "localized_at_row": 22,
+   "expected_row": 22,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 22,
+    "row_id": "call-10-request",
+    "check": "bytes_pin",
+    "detail": "row digest 0740a141630a76be8879f0c6bec37e38c20f1674f0df5b7051ff93dad0900683 != pinned 1d2ff933c95a4a64e976b1c99ee1d583a91bfd5752d10221c9bfa1b8b6ba6dff — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 23,
+   "row_id": "call-10-response",
+   "detected": true,
+   "localized_at_row": 23,
+   "expected_row": 23,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 23,
+    "row_id": "call-10-response",
+    "check": "bytes_pin",
+    "detail": "row digest 18eec3096663d3f6a4baeaf032b6219bb562b2ae02df63a0bb4f8ccb15e2a09c != pinned 768440181b41b315a8c1a3ea4b27f8dcb1daabcc247481d3fc53fd0c63588afc — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 24,
+   "row_id": "usage-jsonl",
+   "detected": true,
+   "localized_at_row": 24,
+   "expected_row": 24,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 24,
+    "row_id": "usage-jsonl",
+    "check": "bytes_pin",
+    "detail": "row digest b51f67494f0f5979b4fead2a9f886bdec13fe06daba96910dac2fd3492d7e4cc != pinned 8adb63334dd72944c9f9a0467ae16c60ff564477d9953e87c6a2b1594f8f8069 — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 25,
+   "row_id": "results",
+   "detected": true,
+   "localized_at_row": 25,
+   "expected_row": 25,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 25,
+    "row_id": "results",
+    "check": "bytes_pin",
+    "detail": "row digest dbe46a551ab361d66888487358c08b4f041e7a96b0765247b3f13cb153a8e2c7 != pinned 8df2a4e2aaae34082ef52ef42ce6a20a050d926e46736949c8a3967be923cc1a — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S1-tamper-sweep",
+   "chain": "crab46a",
+   "row_index": 26,
+   "row_id": "verdict-md",
+   "detected": true,
+   "localized_at_row": 26,
+   "expected_row": 26,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab46a",
+    "row_index": 26,
+    "row_id": "verdict-md",
+    "check": "bytes_pin",
+    "detail": "row digest 372cb449f5e00b4ad88803ad7a369362660a58d15fb0f133d1446bb158e3f23d != pinned e31922e5c6f3300dcd072fcc119b67f2b2a624e8f7da8ad682df33a857c1db7b — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S2-missing-file",
+   "chain": "crab45c",
+   "row_index": 5,
+   "row_id": "whitening-receipt",
+   "detected": true,
+   "localized_at_row": 5,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 5,
+    "row_id": "whitening-receipt",
+    "check": "bytes_pin",
+    "detail": "file unreadable: ENOENT (absence fails closed)"
+   }
+  },
+  {
+   "case": "S3-wrong-tip",
+   "chain": "crab44a",
+   "expect_tip_given": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "detected": true,
+   "first_failure": {
+    "chain": "crab44a",
+    "row_index": 4,
+    "row_id": "verdict-md",
+    "check": "expect_tip",
+    "detail": "recomputed tip 0886f81d016c7ee1ca23fd2cbdaea663d43ff7cd4c7bfb687cf0e37a3c5709e4 != expected aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   },
+   "pass": true
+  },
+  {
+   "case": "S4-usage-row-tamper",
+   "chain": "crab45c",
+   "row_index": 17,
+   "row_id": "usage-jsonl",
+   "detected": true,
+   "localized_at_row": 17,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab45c",
+    "row_index": 17,
+    "row_id": "usage-jsonl",
+    "check": "bytes_pin",
+    "detail": "row digest 9636999b9e39ebe2175e4d8e619cf76ad3e7fd38e6e17d7f22dad14610402685 != pinned 7fed06bc2c6f56ad6ada9d98962ef21e3be2fcf0bfe74243215597fcb63a75bb — tamper or pin drift detected AT THIS ROW"
+   }
+  },
+  {
+   "case": "S5-unknown-chain",
+   "chain": "crab999",
+   "detected": true,
+   "pass": true,
+   "first_failure": {
+    "chain": "crab999",
+    "row_index": null,
+    "row_id": null,
+    "check": "chain_exists",
+    "detail": "chain id not present in pin table"
+   }
+  },
+  {
+   "case": "S6-mutated-pins-refused",
+   "chain": "crab45c",
+   "detected": true,
+   "pass": true,
+   "stderr_excerpt": "reader: pin table seal MISMATCH: masked sha 1cf4167da14250410fc9bd5b7d896b14c288ac1d0f52b5cfd19fb0b927f793ff != sealed 7efea995e661dc2dd138ef78ed84cd9eb92452aab50e4d2afa3c2ee4ed90e30c — the pin table "
+  }
+ ]
+}

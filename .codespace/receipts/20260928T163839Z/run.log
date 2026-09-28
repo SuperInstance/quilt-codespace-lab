@@ -1,0 +1,15 @@
+[16:38:39] E-CS52-1 (attempt 8) begin
+Linux codespaces-3c3837 6.8.0-1064-azure #72~22.04.1-Ubuntu SMP Wed Jul 22 23:39:45 UTC 2026 x86_64 GNU/Linux
+node: v20.20.2
+npm:  10.8.2
+git:  git version 2.55.0
+[16:38:39] env var names receipted (values never)
+[16:38:40] channel A: npm registry install via scoped .npmrc
+[16:38:41] channel A rc=1
+[16:38:41] channel B: release-asset fallback (E403 root cause receipted in attempt 3)
+[16:38:42] asset url resolved: yes
+[16:38:44] channel B rc=0
+afaa7cf0d436d2c9aeabcb31f067f6fbe34e1d4c40c8b2670ffcce28323cdf69  /tmp/consumer/qthe.tgz
+ver: 0.2.0
+[16:38:46] selftest rc=0 (0 == 54/54)
+[16:38:49] receipt written, verdict=PASS

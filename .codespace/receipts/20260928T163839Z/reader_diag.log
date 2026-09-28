@@ -1,0 +1,10 @@
+node -v: v20.20.2
+reader: pin table mtime does not match seal.mtime_local (1790613524054.6736 vs 1790613310268) — refusing to walk (fail closed); distribution consumers: pass --mtime-witness (fleet law A4)
+direct-reader rc=2
+--- direct reader stdout ---
+tar-extract selftest rc=0
+ "cases_total": 54,
+ "cases_passed": 54,
+ "escapes": 0,
+ "ok": true
+}
