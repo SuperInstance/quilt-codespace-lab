@@ -26,7 +26,7 @@ mkdir -p "$OUT"
 
 log() { echo "[$(date -u +%H:%M:%S)] $*" >> "$OUT/run.log"; }
 
-log "E-CS52-1 (attempt 6) begin"
+log "E-CS52-1 (attempt 7) begin"
 { uname -a; } >> "$OUT/run.log" 2>&1
 echo "node: $(command -v node >/dev/null 2>&1 && node -v 2>&1 || echo ABSENT)" >> "$OUT/run.log"
 echo "npm:  $(command -v npm  >/dev/null 2>&1 && npm -v  2>&1 || echo ABSENT)" >> "$OUT/run.log"
@@ -85,6 +85,19 @@ PYEOF
     log "selftest rc=$SELFTEST_RC (0 == 54/54)"
     # per-case detail lives in the consumer's run_receipts — capture it
     cp -r node_modules/@superinstance/qthe/run_receipts "$OUT/consumer_run_receipts" >> "$OUT/run.log" 2>&1
+    # ---- attempt-7 diagnostics: reader stderr verbatim + extraction isolation ----
+    QDIR=/tmp/consumer/node_modules/@superinstance/qthe
+    echo "node -v: $(node -v)" >> "$OUT/reader_diag.log"
+    node "$QDIR/reader.mjs" --repo "$QDIR/fixtures/crab-traps" --pins "$QDIR/registration.json" \
+      --chain crab44a > "$OUT/reader-out.json" 2>> "$OUT/reader_diag.log"
+    echo "direct-reader rc=$?" >> "$OUT/reader_diag.log"
+    echo "--- direct reader stdout ---" >> "$OUT/reader_diag.log"
+    head -c 800 "$OUT/reader-out.json" >> "$OUT/reader_diag.log" 2>/dev/null
+    # extraction isolation: same tarball via tar xzf (not npm), selftest against it
+    mkdir -p /tmp/tarx && tar xzf /tmp/consumer/qthe.tgz -C /tmp/tarx 2>> "$OUT/reader_diag.log"
+    ( cd /tmp/tarx/package && CRAB_TRAPS_PATH=/tmp/tarx/package/fixtures/crab-traps \
+      node selftest.mjs > /tmp/tarx-selftest.log 2>&1; echo "tar-extract selftest rc=$?" >> "$OUT/reader_diag.log" )
+    tail -5 /tmp/tarx-selftest.log >> "$OUT/reader_diag.log" 2>/dev/null
     [ $SELFTEST_RC -eq 0 ] && VERDICT="PASS"
   else
     tail -40 "$OUT/install.log" > "$OUT/selftest.log"
@@ -96,7 +109,7 @@ fi
 
 # --- step 3: receipt ---
 cat > "$OUT/RECEIPT.md" <<EOF
-# Codespace experiment receipt E-CS52-1 (attempt 6)
+# Codespace experiment receipt E-CS52-1 (attempt 7)
 - date (UTC): $TS
 - codespace: $CODESPACE_NAME
 - repo: $GITHUB_REPOSITORY
