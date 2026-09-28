@@ -26,7 +26,7 @@ mkdir -p "$OUT"
 
 log() { echo "[$(date -u +%H:%M:%S)] $*" >> "$OUT/run.log"; }
 
-log "E-CS52-1 (attempt 3) begin"
+log "E-CS52-1 (attempt 4) begin"
 { uname -a; } >> "$OUT/run.log" 2>&1
 echo "node: $(command -v node >/dev/null 2>&1 && node -v 2>&1 || echo ABSENT)" >> "$OUT/run.log"
 echo "npm:  $(command -v npm  >/dev/null 2>&1 && npm -v  2>&1 || echo ABSENT)" >> "$OUT/run.log"
@@ -34,23 +34,46 @@ echo "git:  $(git --version 2>&1)" >> "$OUT/run.log"
 env | cut -d= -f1 | sort > "$OUT/env-var-names.txt"
 log "env var names receipted (values never)"
 
-VERDICT="FAIL"; INSTALL_RC=99; SELFTEST_RC=99
-# --- step 1: consume the published package from GitHub Packages ---
+VERDICT="FAIL"; INSTALL_RC=99; SELFTEST_RC=99; CHANNEL="none"
+# --- step 1: consume the published package (channel A: GitHub Packages registry;
+#      channel B fallback: release asset — codespace tokens lack read:packages,
+#      E403 receipted in attempt 3; contents:read suffices for releases) ---
 if command -v npm >/dev/null 2>&1; then
   mkdir -p /tmp/consumer && cd /tmp/consumer
   npm init -y >/dev/null 2>&1
-  # npm auth: the token goes into a throwaway .npmrc (never printed, deleted after)
+  # channel A: throwaway scoped .npmrc (token never printed, deleted after)
   {
     echo "@superinstance:registry=https://npm.pkg.github.com/"
     echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}"
     echo "always-auth=true"
   } > /tmp/consumer/.npmrc
   chmod 600 /tmp/consumer/.npmrc
-  log "npm install @superinstance/qthe via scoped .npmrc (token not printed)"
+  log "channel A: npm registry install via scoped .npmrc"
   npm install @superinstance/qthe >> "$OUT/install.log" 2>&1
   INSTALL_RC=$?
   rm -f /tmp/consumer/.npmrc
-  log "install rc=$INSTALL_RC"
+  CHANNEL="registry"
+  log "channel A rc=$INSTALL_RC"
+  # channel B: release asset (contents:read is in the codespace token's scope)
+  if [ $INSTALL_RC -ne 0 ]; then
+    log "channel B: release-asset fallback (E403 root cause receipted in attempt 3)"
+    curl -sS -L -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/octet-stream" \
+      -o /tmp/consumer/qthe.tgz \
+      "https://api.github.com/repos/SuperInstance/qthe/releases/tags/v0.1.0" >> "$OUT/install.log" 2>&1
+    # the above fetches metadata; grab the asset properly
+    ASSET_URL=$(curl -sS -H "Authorization: token ${GITHUB_TOKEN}" \
+      "https://api.github.com/repos/SuperInstance/qthe/releases/tags/v0.1.0" \
+      | grep -o '"browser_download_url": *"[^"]*superinstance-qthe-0.1.0.tgz"' | head -1 | cut -d'"' -f4)
+    log "asset url resolved: ${ASSET_URL:+yes}"
+    if [ -n "$ASSET_URL" ]; then
+      curl -sS -L -H "Authorization: token ${GITHUB_TOKEN}" -o /tmp/consumer/qthe.tgz "$ASSET_URL" >> "$OUT/install.log" 2>&1
+      curl -sS -L -o /tmp/consumer/qthe.tgz "$ASSET_URL" >> "$OUT/install.log" 2>&1
+      npm install /tmp/consumer/qthe.tgz >> "$OUT/install.log" 2>&1
+      INSTALL_RC=$?
+      CHANNEL="release-asset"
+      log "channel B rc=$INSTALL_RC"
+    fi
+  fi
   # --- step 2: sealed selftest ---
   if [ $INSTALL_RC -eq 0 ]; then
     node node_modules/@superinstance/qthe/selftest.mjs > "$OUT/selftest.log" 2>&1
@@ -67,13 +90,14 @@ fi
 
 # --- step 3: receipt ---
 cat > "$OUT/RECEIPT.md" <<EOF
-# Codespace experiment receipt E-CS52-1 (attempt 3)
+# Codespace experiment receipt E-CS52-1 (attempt 4)
 - date (UTC): $TS
 - codespace: $CODESPACE_NAME
 - repo: $GITHUB_REPOSITORY
-- experiment: consume @superinstance/qthe from GitHub Package Registry, run sealed selftest
+- experiment: consume @superinstance/qthe (channel A: registry, channel B: release asset), run sealed selftest
 - install rc: $INSTALL_RC
 - selftest rc: $SELFTEST_RC (0 = 54/54 asserts, 0 escapes)
+- channel: $CHANNEL
 - VERDICT: $VERDICT
 - doctrine: receipt pushed even on FAIL; worker deleted after push (zero-extraction)
 EOF
